@@ -1,13 +1,2 @@
-#!/bin/bash
-set -e
-
-echo "Starting LiteLLM Proxy..."
-
-CMD_ARGS="--config /app/config.yaml --port 4000"
-
-if [ -n "$NUM_WORKERS" ]; then
-    CMD_ARGS="$CMD_ARGS --num_workers $NUM_WORKERS"
-fi
-
-echo "Launching LiteLLM with: $CMD_ARGS"
-exec litellm $CMD_ARGS
+set -e                                                                                                                                                                                                       
+  exec litellm --model gemini/gemini-2.5-flash --port 4000 --master_key $LITELLM_MASTER_KEY
